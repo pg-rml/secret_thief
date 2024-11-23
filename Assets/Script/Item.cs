@@ -17,9 +17,17 @@ public class Item : MonoBehaviour
         totalValue = PlayerPrefs.GetInt("TotalValue");
 
         if(totalWeight + weight <= 10){
+
             PlayerPrefs.SetInt("TotalWeight", totalWeight + weight);
             PlayerPrefs.Save();
+
             Debug.Log(PlayerPrefs.GetInt("TotalWeight"));
+
+            int PlayerScore = PlayerPrefs.GetInt("PlayerScore") + value;
+            PlayerPrefs.SetInt("PlayerScore", PlayerScore);
+
+            Debug.Log("누적 점수 " + PlayerPrefs.GetInt("PlayerScore"));
+            
             Destroy(gameObject);
         }
 

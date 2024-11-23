@@ -30,8 +30,37 @@ public class House : MonoBehaviour
         this.selected = 1;
         PlayerPrefs.SetInt("HouseSelected_" + this.index, this.selected);
         
-        PlayerPrefs.SetInt("OldHouseIndex", this.index);
-        
+        int oldHouseX = PlayerPrefs.GetInt("OldHouseX");
+        int oldHouseY = PlayerPrefs.GetInt("OldHouseY");
+
+        int calX = 0;
+        int calY = 0;
+
+        if(oldHouseX > x){
+            calX = oldHouseX - x;
+        }
+        else{
+            calX = x - oldHouseX;
+        } 
+
+        if(oldHouseY > y){
+            calY = oldHouseY - y;
+        }
+        else{
+            calY = y - oldHouseY;
+        }    
+
+        int PlayerDistance = PlayerPrefs.GetInt("PlayerDistance") + (calX + calY);
+        PlayerPrefs.SetInt("PlayerDistance", PlayerDistance);
+
+        Debug.Log("이동 거리 갱신 " + PlayerPrefs.GetInt("PlayerDistance"));
+
+        PlayerPrefs.SetInt("OldHouseX", x);
+        PlayerPrefs.SetInt("OldHouseY", y);
+
+        int HouseCount = PlayerPrefs.GetInt("HouseCount") + 1;
+        PlayerPrefs.SetInt("HouseCount", HouseCount);
+        PlayerPrefs.Save();
         SceneManager.LoadScene("House");
     }
     

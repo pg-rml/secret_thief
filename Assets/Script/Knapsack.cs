@@ -8,7 +8,7 @@ public class Knapsack : MonoBehaviour
 {
 
     // 사과, 다이아, 시계, 마음, 금    
-    List<int> itemWeight = new List<int> { 0, 3, 4, 5, 5, 7 };
+    List<int> itemWeight = new List<int> { 0, 3, 4, 5, 6, 7 };
     List<int> itemValue = new List<int> { 0, 1, 5, 3, 10, 5 };
     //int[] itemWeight = {0, 3, 4, 5, 5, 7};
     //int[] itemValue = {0, 1, 5, 3, 10, 5};
@@ -28,6 +28,7 @@ public class Knapsack : MonoBehaviour
             if(delete == temp) continue;
             
             delete = temp;
+
             itemWeight.RemoveAt(delete);
             itemValue.RemoveAt(delete);
 
@@ -35,6 +36,7 @@ public class Knapsack : MonoBehaviour
                 Item item = obj.GetComponent<Item>();
 
                 if (item != null && item.index == delete){
+                    
                     Destroy(obj); // 오브젝트 삭제
                     break;
                 }
@@ -75,7 +77,10 @@ public class Knapsack : MonoBehaviour
             } 
         }
 
-        Debug.Log(K[3, 10]);
+        Debug.Log("최고 점수 " + K[3, 10]);
+        int HighScore = PlayerPrefs.GetInt("HighScore") + K[3, 10];
+        PlayerPrefs.SetInt("HighScore", HighScore);
+        PlayerPrefs.Save();
     }
     // Start is called before the first frame update
     void Start()

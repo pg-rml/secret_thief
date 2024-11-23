@@ -61,6 +61,9 @@ public class HouseGenerator : MonoBehaviour
 
         if (!PlayerPrefs.HasKey("FirstExecutionDone"))
         {   
+            PlayerPrefs.SetInt("OldHouseX", 5);
+            PlayerPrefs.SetInt("OldHouseY", 0);
+
             for (int i = 0; i < 5; i++) {
                 HouseArray[i] = MakeHouse(i, i, HouseArray);
                 
@@ -116,7 +119,8 @@ public class HouseGenerator : MonoBehaviour
             //Debug.Log(HouseArray[i].index + " " + HouseArray[i].x + " " + HouseArray[i].y + " " + HouseArray[i].selected);
         }
 
-        Debug.Log("트리 계산 결과 " + PlayerPrefs.GetInt("totalDistance"));
+        Debug.Log("트리 계산 결과 " + PlayerPrefs.GetInt("ShortestDistance"));
+        //PlayerPrefs.SetInt("ShortestDistance", 0);
         
     }
 

@@ -89,8 +89,8 @@ public class GraphManager : MonoBehaviour
                       
         }
 
-        PlayerPrefs.SetInt("totalDistance", totalDistance);
-        Debug.Log(totalDistance);
+        PlayerPrefs.SetInt("ShortestDistance", totalDistance);
+        //Debug.Log(totalDistance);
         //printArray(result);
 
     }
@@ -185,6 +185,6 @@ public class GraphManager : MonoBehaviour
     }
 
     void OnApplicationQuit(){
-        PlayerPrefs.DeleteKey("totalDistance");
+        //PlayerPrefs.DeleteKey("totalDistance");
     }
 }
