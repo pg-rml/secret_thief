@@ -8,7 +8,7 @@ public class SceneController : MonoBehaviour
     public void OnMouseDown(){
         
         Debug.Log("눌림");
-        SceneManager.LoadScene("Ending");
+        SceneManager.LoadScene("House");
         
     }
     // Update is called once per frame

@@ -90,7 +90,7 @@ public class GraphManager : MonoBehaviour
         }
 
         PlayerPrefs.SetInt("totalDistance", totalDistance);
-        //Debug.Log(totalDistance);
+        Debug.Log(totalDistance);
         //printArray(result);
 
     }
@@ -126,7 +126,7 @@ public class GraphManager : MonoBehaviour
 
                 weight[i, j] = (bigx - smallx) + (bigy - smally); 
 
-                if(weight[i, j] > 5) weight[i, j] = -1;       
+                //if(weight[i, j] > 5) weight[i, j] = -1;       
             }
         
         }
@@ -159,7 +159,7 @@ public class GraphManager : MonoBehaviour
         graphType.Housenum = 6;
 
         HouseArray[0] = new House(); 
-        HouseArray[0].Initialize(5, 0, -1);
+        HouseArray[0].Initialize(0, 5, 0, -1);
 
         for (int index = 0; index < 5; index++) {
             
@@ -167,7 +167,7 @@ public class GraphManager : MonoBehaviour
             int y = PlayerPrefs.GetInt("HouseY_" + index);
             int type = PlayerPrefs.GetInt("HouseType_" + index);
             HouseArray[index + 1] = new House(); 
-            HouseArray[index + 1].Initialize(x, y, type);
+            HouseArray[index + 1].Initialize(index, x, y, type);
 
         }
 
@@ -181,7 +181,7 @@ public class GraphManager : MonoBehaviour
     }
 
     void Start(){
-        makeHouseTree();
+        //makeHouseTree();
     }
 
     void OnApplicationQuit(){
