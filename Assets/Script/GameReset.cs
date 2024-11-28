@@ -13,6 +13,8 @@ public class GameReset : MonoBehaviour
         PlayerPrefs.DeleteKey("HouseY_0");
 
         PlayerPrefs.DeleteKey("FirstExecutionDone");
+
+        PlayerPrefs.SetInt("NewGame", 1);
     }
 
 }

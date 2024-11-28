@@ -27,8 +27,11 @@ public class ClickManager : MonoBehaviour
 
       else if(SceneManager.GetActiveScene().name == "House"){
          
-         if(PlayerPrefs.GetInt("HouseCount") == 3)
+         if(PlayerPrefs.GetInt("HouseCount") == 3){
+            
             SceneManager.LoadScene("Ending");
+         }
+            
          else SceneManager.LoadScene("Map");
       }
 
