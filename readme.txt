@@ -1,6 +1,3 @@
-git 주소 : https://github.com/pg-rml/secret_thief
-시연영상 : https://youtu.be/t_6NlpD-vXI
-
 실행방법
 1. 유니티
 새로운 2D 프로젝트를 만든 후, 로컬 폴더를 찾아 Assets 파일을 덮어씌운 후 실행
