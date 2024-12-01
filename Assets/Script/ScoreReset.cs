@@ -16,7 +16,8 @@ public class ScoreReset : MonoBehaviour
         PlayerPrefs.SetInt("ShortestDistance", 0);
         PlayerPrefs.SetInt("PlayerDistance", 0);
 
-        PlayerPrefs.Save();        
+        PlayerPrefs.DeleteKey("NewGame");
+ 
     }
 
     // Update is called once per frame

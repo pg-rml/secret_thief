@@ -18,19 +18,55 @@ public class Knapsack : MonoBehaviour
 
     int[,] K = new int[4 , 11];
     
+    void Print2DArray(int[,] array)
+    {
+        string output = ""; // 출력할 문자열
+
+        for (int i = 0; i < array.GetLength(0); i++) // 행 순회
+        {
+            for (int j = 0; j < array.GetLength(1); j++) // 열 순회
+            {
+                output += array[i, j] + " "; // 각 값을 문자열에 추가
+            }
+            output += "\n"; // 각 행의 끝에 줄바꿈 추가
+        }
+
+        Debug.Log(output); // 최종 문자열을 Console 창에 출력
+    }
     void itemSetting(){
 
         int delete = 0;
+        int delete2 = 0;
 
+        int temp = Random.Range(1, 4);
+        delete = temp;
+        Debug.Log("delete " + delete);
         while(true){
 
-            int temp = Random.Range(1, 4);
+            temp = Random.Range(1, 4);
             if(delete == temp) continue;
             
-            delete = temp;
+            delete2 = temp;
+            Debug.Log("delete2 " + delete2);
 
-            itemWeight.RemoveAt(delete);
-            itemValue.RemoveAt(delete);
+            if(delete2 > delete){
+                itemWeight.RemoveAt(delete2);
+                itemWeight.RemoveAt(delete);
+            }
+            else{
+                itemWeight.RemoveAt(delete);
+                itemWeight.RemoveAt(delete2);
+            }
+
+            if(delete2 > delete){
+                itemValue.RemoveAt(delete2);
+                itemValue.RemoveAt(delete);
+            }
+            else{
+                itemValue.RemoveAt(delete);
+                itemValue.RemoveAt(delete2);
+            }
+            
 
             foreach (GameObject obj in GameObject.FindObjectsOfType<GameObject>()){
                 Item item = obj.GetComponent<Item>();
@@ -39,6 +75,19 @@ public class Knapsack : MonoBehaviour
                     
                     Destroy(obj); // 오브젝트 삭제
                     break;
+
+                }
+            
+            }
+
+            foreach (GameObject obj in GameObject.FindObjectsOfType<GameObject>()){
+                Item item = obj.GetComponent<Item>();
+
+                if (item != null && item.index == delete2){
+                    
+                    Destroy(obj); // 오브젝트 삭제
+                    break;
+
                 }
             
             }
@@ -50,7 +99,9 @@ public class Knapsack : MonoBehaviour
     public void calculateK(){
 
         int big = 0;
-
+        Debug.Log(itemWeight[1] + ", " + itemWeight[2] + ", " +itemWeight[3]);
+        Debug.Log(itemValue[1] + ", " + itemValue[2] + ", " +itemValue[3]);
+        
         for(int i = 0; i < 4; i++){
             K[i, 0] = 0;
         }
@@ -79,6 +130,8 @@ public class Knapsack : MonoBehaviour
 
         Debug.Log("최고 점수 " + K[3, 10]);
         int HighScore = PlayerPrefs.GetInt("HighScore") + K[3, 10];
+        Print2DArray(K);
+        
         PlayerPrefs.SetInt("HighScore", HighScore);
         PlayerPrefs.Save();
     }

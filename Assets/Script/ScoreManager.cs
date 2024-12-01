@@ -15,9 +15,9 @@ public class ScoreManager : MonoBehaviour
         
         float currentScore = 0f;
         currentScore += ((float)(PlayerPrefs.GetInt("PlayerScore"))/(float)(PlayerPrefs.GetInt("HighScore"))) * 50;
-        Debug.Log(currentScore);
+        Debug.Log(PlayerPrefs.GetInt("PlayerScore") + "" + PlayerPrefs.GetInt("HighScore"));
         currentScore += ((float)(PlayerPrefs.GetInt("ShortestDistance")) / (float)(PlayerPrefs.GetInt("PlayerDistance"))) * 50;
-        Debug.Log(currentScore);
+        Debug.Log(PlayerPrefs.GetInt("ShortestDistance") + "" + PlayerPrefs.GetInt("PlayerDistance"));
 
         if(!PlayerPrefs.HasKey("NewGame"))
         {
